@@ -15,20 +15,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <httpLAYOUT_split_3x6_3(//www.gnu.org/licenses/>.
 */
-
 #include QMK_KEYBOARD_H
 #include "keymap_norwegian.h"
+
+
+enum custom_keycodes {
+    GUI_H = SAFE_RANGE, // Remap GUI directions because GUI+L cannot be remapped in windows
+    GUI_J,
+    GUI_K,
+    GUI_L,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3_ex2(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, DM_REC1,  DM_REC2,      KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  NO_ARNG,
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, DM_REC1,  DM_REC2,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, NO_ARNG,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, DM_PLY1,  DM_PLY2,      KC_H,    KC_J,    KC_K,    KC_L, NO_OSTR, NO_AE,
+       KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, DM_PLY1,  DM_PLY2,     GUI_H,   GUI_J,   GUI_K,   GUI_L, NO_OSTR,   NO_AE,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
+      KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_LALT, KC_RCTL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  KC_SPC,     KC_ENT,   MO(2), KC_RALT
+                                          KC_LGUI,   MO(1),  KC_SPC,     KC_ENT,   MO(2), KC_LSFT
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -41,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3), KC_RALT
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3), KC_LSFT
                                       //`--------------------------'  `--------------------------'
   ),
         // Symbols and numbers layer
@@ -53,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       NO_QUOT, NO_DQUO, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,                         KC_0,    KC_1,    KC_2,    KC_3,  NO_EQL, NO_PERC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(3),  KC_SPC,     KC_ENT, _______, KC_RALT
+                                          KC_LGUI,   MO(3),  KC_SPC,     KC_ENT, _______, KC_LSFT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -65,15 +72,68 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RM_NEXT, RM_HUED, RM_SATD, RM_VALD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_LSFT
                                       //`--------------------------'  `--------------------------'
   )
 };
 
+ // Remap GUI directions because GUI+L cannot be remapped in windows
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case GUI_H:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_LEFT);
+                } else {
+                    register_code(KC_H);
+                }
+            } else {
+                unregister_code(KC_LEFT);
+                unregister_code(KC_H);
+            }
+            return false;
 
+        case GUI_J:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_DOWN);
+                } else {
+                    register_code(KC_J);
+                }
+            } else {
+                unregister_code(KC_DOWN);
+                unregister_code(KC_J);
+            }
+            return false;
 
+        case GUI_K:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_UP);
+                } else {
+                    register_code(KC_K);
+                }
+            } else {
+                unregister_code(KC_UP);
+                unregister_code(KC_K);
+            }
+            return false;
 
-
+        case GUI_L:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_RIGHT);
+                } else {
+                    register_code(KC_L);
+                }
+            } else {
+                unregister_code(KC_RIGHT);
+                unregister_code(KC_L);
+            }
+            return false;
+    }
+    return true;
+}
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
