@@ -31,11 +31,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, DM_REC1,  DM_REC2,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, NO_ARNG,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, DM_PLY1,  DM_PLY2,     GUI_H,   GUI_J,   GUI_K,   GUI_L, NO_OSTR,   NO_AE,
+       KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, DM_PLY1,  DM_PLY2,     GUI_H,   GUI_J,   GUI_K,   GUI_L,    KC_N,   NO_AE,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_LALT, KC_RCTL,
+      KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      NO_OSTR,    KC_M, KC_COMM,  KC_DOT, KC_LALT, KC_RCTL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                       KC_LGUI, LT(1,KC_SPC), KC_ENT,  KC_LSFT, LT(2,KC_BSPC), KC_LALT
+                              KC_LGUI, LT(1,KC_SPC), LCTL_T(KC_ENT),  KC_LSFT, LT(2,KC_BSPC), KC_LALT
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX,  KC_ENT, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_ENT,     KC_LSFT,   MO(3), KC_LALT
+                                   KC_LGUI, _______,  LCTL_T(KC_ENT),     KC_LSFT,   MO(3), KC_LALT
                                       //`--------------------------'  `--------------------------'
   ),
         // Symbols and numbers layer
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       NO_AMPR, NO_DLR, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,                       NO_MINS,    KC_1,    KC_2,    KC_3, NO_SLSH, NO_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         //lll
-                                          KC_LGUI,   MO(3),  KC_ENT,     KC_LSFT, _______, KC_LALT
+                                 KC_LGUI,   MO(3),  LCTL_T(KC_ENT),     KC_LSFT, _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
   ),
 
