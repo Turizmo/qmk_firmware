@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define QUICK_TAP_TERM 0
 //#define TAPPING_TERM 100
 #define DOUBLE_REPORT //uses fix for RDP in github issue #19449
+#define KEYBOARD_MOD_PACKET_DELAY 20
 // Changing stuff here does not seem to do anything as the this is likely stored and loaded from eeprom.
 #ifdef RGB_MATRIX_ENABLE
 // #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses

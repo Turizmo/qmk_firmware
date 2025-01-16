@@ -24,6 +24,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "usb_device_state.h"
 #include <string.h>
 
+#include "wait.h"
+
+#ifndef KEYBOARD_MOD_PACKET_DELAY
+#    define KEYBOARD_MOD_PACKET_DELAY 0
+#endif
+
+#ifndef KEYBOARD_GENERAL_PACKET_DELAY
+#    define KEYBOARD_GENERAL_PACKET_DELAY 0
+#endif
+
 extern keymap_config_t keymap_config;
 
 static uint8_t real_mods = 0;
@@ -284,27 +294,57 @@ static uint8_t get_mods_for_report(void) {
 }
 
 void send_6kro_report(void) {
-    keyboard_report->mods = get_mods_for_report();
-
-// #ifdef PROTOCOL_VUSB
-//     host_keyboard_send(keyboard_report);
-// #else
- static report_keyboard_t last_report;
-
-#ifndef PROTOCOL_VUSB
-    /* Only send the report if there are changes to propagate to the host. */
-    if (memcmp(&last_report, keyboard_report, sizeof(report_keyboard_t)) != 0)
+#if (((KEYBOARD_MOD_PACKET_DELAY) > 0) || ((KEYBOARD_GENERAL_PACKET_DELAY) > 0))
+    // Keep track of the state of mods
+    uint8_t old_mods = keyboard_report->mods;
 #endif
-    {
+
+    keyboard_report->mods = real_mods;
+    keyboard_report->mods |= weak_mods;
+
+#ifndef NO_ACTION_ONESHOT
+    if (oneshot_mods) {
+#    if (defined(ONESHOT_TIMEOUT) && (ONESHOT_TIMEOUT > 0))
+        if (has_oneshot_mods_timed_out()) {
+            dprintf("Oneshot: timeout\n");
+            clear_oneshot_mods();
+        }
+#    endif
+        keyboard_report->mods |= oneshot_mods;
+        if (has_anykey()) {
+            clear_oneshot_mods();
+        }
+    }
+#endif
+#ifdef KEY_OVERRIDE_ENABLE
+    // These need to be last to be able to properly control key overrides
+    keyboard_report->mods &= ~suppressed_mods;
+    keyboard_report->mods |= weak_override_mods;
+#endif
+#ifdef PROTOCOL_VUSB
+    host_keyboard_send(keyboard_report);
+#else
+    static report_keyboard_t last_report;
+    /* Only send the report if there are changes to propagate to the host. */
+    if (memcmp(keyboard_report, &last_report, sizeof(report_keyboard_t)) != 0) {
         memcpy(&last_report, keyboard_report, sizeof(report_keyboard_t));
         host_keyboard_send(keyboard_report);
-
-#ifdef DOUBLE_REPORT
-        memcpy(keyboard_report, &last_report, sizeof(report_keyboard_t)); // host_keyboard_send() sometimes modifies keyboard_report to handle protocol details, so restore the original from last_report
-        host_keyboard_send(keyboard_report);
-#endif
     }
+#endif
+
+#if ((KEYBOARD_MOD_PACKET_DELAY) > 0)
+    // If the mods are changing...
+    if (keyboard_report->mods != old_mods) {
+        // Wait for a fixed amount of time to allow the host to process the report
+        wait_ms(KEYBOARD_MOD_PACKET_DELAY);
+    }
+#endif
+#if ((KEYBOARD_GENERAL_PACKET_DELAY) > 0)
+    // Wait for a fixed amount of time to allow the host to process the report
+    wait_ms(KEYBOARD_GENERAL_PACKET_DELAY);
+#endif
 }
+
 
 #ifdef NKRO_ENABLE
 void send_nkro_report(void) {
