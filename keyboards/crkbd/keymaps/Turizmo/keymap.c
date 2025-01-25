@@ -68,7 +68,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       NO_AMPR, NO_DLR, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,                       NO_MINS,    KC_1,    KC_2,    KC_3, NO_SLSH, NO_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        //lll
                                  KC_LGUI,   MO(3),  LCTL_T(KC_ENT),     KC_LSFT, _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
   ),
@@ -86,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-static uint8_t repeat_count = 10;
+static uint8_t repeat_count = 0;
 
  // Remap GUI directions because GUI+L cannot be remapped in windows
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
