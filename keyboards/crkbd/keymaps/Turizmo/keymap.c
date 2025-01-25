@@ -24,6 +24,14 @@ enum custom_keycodes {
     GUI_J,
     GUI_K,
     GUI_L,
+    R_SET_1,
+    R_SET_2,
+    R_SET_3,
+    R_SET_4,
+    R_LEFT,
+    R_DOWN,
+    R_UP,
+    R_RIGHT,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -44,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,  RGB_MOD, RGB_RMOD,  KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R,   KC_0,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_BSPC, XXXXXXX,
+      KC_LCTL, R_SET_1, R_SET_2, R_SET_3, R_SET_4, XXXXXXX,  XXXXXXX,   XXXXXXX, R_LEFT,   R_DOWN,    R_UP, R_RIGHT, KC_BSPC, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX,  KC_ENT, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -71,15 +79,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RM_HUEU, RM_SATU, RM_VALU, RGB_SPI, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_RMOD, RM_HUED, RM_SATD, RM_VALD, RGB_SPD, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+     RGB_RMOD, RM_HUED, RM_SATD, RM_VALD, RGB_SPD, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_ENT,     KC_LSFT, _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
   )
 };
 
+static uint8_t repeat_count = 10;
+
  // Remap GUI directions because GUI+L cannot be remapped in windows
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint8_t set_r_1_held = 0;
+    static uint8_t set_r_2_held = 0;
+    static uint8_t set_r_3_held = 0;
+    static uint8_t set_r_4_held = 0;
+
     switch (keycode) {
         case GUI_H:
             if (record->event.pressed) {
@@ -132,7 +147,126 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_L);
             }
             return false;
+
+        case R_LEFT:
+            if (record->event.pressed) {
+                if (repeat_count == 0) {
+                    register_code(KC_LEFT);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_LEFT);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_LEFT);
+            }
+            break;
+
+       case R_DOWN:
+            if (record->event.pressed) {
+                if (repeat_count == 0) {
+                    register_code(KC_DOWN);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_DOWN);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_DOWN);
+            }
+            break;
+
+       case R_UP:
+            if (record->event.pressed) {
+                if (repeat_count == 0) {
+                    register_code(KC_UP);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_UP);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_UP);
+            }
+            break;
+
+       case R_RIGHT:
+            if (record->event.pressed) {
+                if (repeat_count == 0) {
+                    register_code(KC_RIGHT);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_RIGHT);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_RIGHT);
+            }
+            break;
+
+        case R_SET_1:
+            if (record->event.pressed) {
+                set_r_1_held = 3;
+            } else {
+                set_r_1_held = 0;
+            }
+            break;
+
+        case R_SET_2:
+            if (record->event.pressed) {
+                set_r_2_held = 10;
+            } else {
+                set_r_2_held = 0;
+            }
+            break;
+
+        case R_SET_3:
+            if (record->event.pressed) {
+                set_r_3_held = 25;
+            } else {
+                set_r_3_held = 0;
+            }
+            break;
+
+        case R_SET_4:
+            if (record->event.pressed) {
+                set_r_4_held = 100;
+            } else {
+                set_r_4_held = 0;
+            }
+            break;
+
+
+
+
+
     }
+    repeat_count = set_r_1_held+set_r_2_held+set_r_3_held+set_r_4_held;
+
+    return true;
+}
+
+bool isRecording = false;
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (isRecording)
+    for (uint8_t i = led_min; i < led_max; i++) {
+         rgb_matrix_set_color(i, RGB_RED);
+    }
+    return false;
+}
+
+bool dynamic_macro_record_start_user(int8_t direction) {
+  isRecording = true;
+    return true;
+}
+
+bool dynamic_macro_record_end_user(int8_t direction) {
+  isRecording = false;
     return true;
 }
 
