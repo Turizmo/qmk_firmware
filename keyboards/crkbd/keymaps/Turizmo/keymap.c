@@ -28,6 +28,10 @@ enum custom_keycodes {
     R_SET_2,
     R_SET_3,
     R_SET_4,
+    R_WH_L,
+    R_WH_D,
+    R_WH_U,
+    R_WH_R,
     R_LEFT,
     R_DOWN,
     R_UP,
@@ -56,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT_split_3x6_3_ex2(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_APP,  KC_PSCR,   NO_GRV,  KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R,  KC_INS, XXXXXXX,
+       KC_TAB, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_APP,  KC_PSCR,   NO_GRV,  R_WH_L, R_WH_D, R_WH_U, R_WH_R,  KC_INS, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, R_SET_1, R_SET_2, R_SET_3, R_SET_4, MS_BTN4,  KC_PAUS,   NO_ACUT,  R_LEFT,  R_DOWN,    R_UP, R_RIGHT,  KC_DEL, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -154,6 +158,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_L);
             }
             return false;
+
+       case R_WH_L:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLL);
+                }
+            }
+            break;
+
+       case R_WH_D:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLD);
+                }
+            }
+            break;
+
+       case R_WH_U:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLU);
+                }
+            }
+            break;
+
+       case R_WH_R:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLR);
+                }
+            }
+            break;
+
 
          case R_LEFT:
             if (record->event.pressed) {
