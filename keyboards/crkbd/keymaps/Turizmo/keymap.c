@@ -99,13 +99,13 @@ static uint8_t repeat_count = 1;
 static bool send_first_key = true;
 
 
- // Remap GUI directions because GUI+L cannot be remapped in windows
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint8_t set_r_1_held = 0;
     static uint8_t set_r_2_held = 0;
     static uint8_t set_r_3_held = 0;
     static uint8_t set_r_4_held = 0;
 
+ // Remap GUI directions because GUI+L cannot be remapped in windows
     switch (keycode) {
         case GUI_H:
             if (record->event.pressed) {
@@ -159,6 +159,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
+        // Functons that allows for repeating mouse keys
        case R_WH_L:
             if (record->event.pressed) {
                 for (uint8_t i = 0; i < repeat_count; i++) {

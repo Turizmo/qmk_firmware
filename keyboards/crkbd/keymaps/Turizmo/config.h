@@ -29,6 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DYNAMIC_MACRO_NO_NESTING
 #define MK_3_SPEED
 #define MK_C_OFFSET_1 10
+#define MK_C_INTERVAL_1 1
 // Changing stuff here does not seem to do anything as the this is likely stored and loaded from eeprom.
 #ifdef RGB_MATRIX_ENABLE
 // #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
