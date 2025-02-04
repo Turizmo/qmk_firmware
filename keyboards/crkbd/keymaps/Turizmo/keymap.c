@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          // Symbols and numbers layer
     [2] = LAYOUT_split_3x6_3_ex2(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      NO_QUOT, NO_DQUO, NO_EXLM, NO_QUES, NO_LBRC, NO_RBRC,  NO_DLR,    NO_LABK, NO_PLUS, NO_UNDS, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,
+      NO_QUOT, NO_DQUO, NO_EXLM, NO_QUES, NO_LCBR, NO_RCBR,  NO_DLR,    NO_LABK, NO_PLUS, NO_UNDS, NO_SCLN, NO_COLN, NO_LBRC, NO_RBRC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       NO_HASH,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, NO_CIRC,    NO_RABK,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, NO_PERC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
