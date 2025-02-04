@@ -69,18 +69,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    KC_LGUI, _______,  LCTL_T(KC_ENT),     KC_LSFT,   MO(3), KC_LALT
                                       //`--------------------------'  `--------------------------'
   ),
-        // Symbols and numbers layer
+         // Symbols and numbers layer
     [2] = LAYOUT_split_3x6_3_ex2(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      NO_SECT, NO_QUOT, NO_DQUO,   NO_AT, NO_LBRC, NO_RBRC, NO_PIPE,    NO_LABK, NO_PLUS,    KC_7,    KC_8,    KC_9, NO_ASTR, NO_CIRC,
+      NO_QUOT, NO_DQUO, NO_EXLM, NO_QUES, NO_LBRC, NO_RBRC,  NO_DLR,    NO_LABK, NO_PLUS, NO_UNDS, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      NO_HASH, NO_UNDS, NO_EXLM, NO_QUES, NO_LPRN, NO_RPRN, NO_TILD,    NO_RABK,  NO_EQL,    KC_4,    KC_5,    KC_6,    KC_0, NO_PERC,
+      NO_HASH,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, NO_CIRC,    NO_RABK,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, NO_PERC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      NO_AMPR, NO_DLR, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,                       NO_MINS,    KC_1,    KC_2,    KC_3, NO_SLSH, NO_BSLS,
+      NO_PIPE, NO_AMPR,  NO_EQL,   NO_AT, NO_LPRN, NO_RPRN,                      NO_ASTR, NO_MINS, KC_COMM,  KC_DOT, NO_SLSH, NO_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                  KC_LGUI,   MO(3),  LCTL_T(KC_ENT),     KC_LSFT, _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
   ),
+  //      // Symbols and numbers layer
+  //   [2] = LAYOUT_split_3x6_3_ex2(
+  // //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+  //     NO_SECT, NO_QUOT, NO_DQUO,   NO_AT, NO_LBRC, NO_RBRC, NO_PIPE,    NO_LABK, NO_PLUS,    KC_7,    KC_8,    KC_9, NO_ASTR, NO_CIRC,
+  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  //     NO_HASH, NO_UNDS, NO_EXLM, NO_QUES, NO_LPRN, NO_RPRN, NO_TILD,    NO_RABK,  NO_EQL,    KC_4,    KC_5,    KC_6,    KC_0, NO_PERC,
+  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  //     NO_AMPR, NO_DLR, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,                       NO_MINS,    KC_1,    KC_2,    KC_3, NO_SLSH, NO_BSLS,
+  // //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+  //                                KC_LGUI,   MO(3),  LCTL_T(KC_ENT),     KC_LSFT, _______, KC_LALT
+  //                                     //`--------------------------'  `--------------------------'
+  // ),
 
     [3] = LAYOUT_split_3x6_3_ex2(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
