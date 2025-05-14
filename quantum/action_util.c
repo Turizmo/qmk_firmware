@@ -294,13 +294,24 @@ static uint8_t get_mods_for_report(void) {
 }
 
 void send_6kro_report(void) {
-#if (((KEYBOARD_MOD_PACKET_DELAY) > 0) || ((KEYBOARD_GENERAL_PACKET_DELAY) > 0))
-    // Keep track of the state of mods
-    uint8_t old_mods = keyboard_report->mods;
-#endif
+    6kro_report->mods = get_mods_for_report();
 
-    keyboard_report->mods = real_mods;
-    keyboard_report->mods |= weak_mods;
+    static report_6kro_t last_report;
+
+    /* Only send the report if there are changes to propagate to the host. */
+    if (memcmp(&last_report, 6kro_report, sizeof(report_6kro_t)) != 0)
+#endif
+    {
+        memcpy(&last_report, 6kro_report, sizeof(report_6kro_t));
+        host_6kro_send(6kro_report);
+
+#ifdef DOUBLE_REPORT
+        memcpy(6kro_report, &last_report, sizeof(report_6kro_t));
+        host_6kro_send(6kro_report);
+#endif
+    }
+}
+
 
 #ifndef NO_ACTION_ONESHOT
     if (oneshot_mods) {
