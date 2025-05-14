@@ -294,24 +294,7 @@ static uint8_t get_mods_for_report(void) {
 }
 
 void send_6kro_report(void) {
-    6kro_report->mods = get_mods_for_report();
-
-    static report_6kro_t last_report;
-
-    /* Only send the report if there are changes to propagate to the host. */
-    if (memcmp(&last_report, 6kro_report, sizeof(report_6kro_t)) != 0)
-#endif
-    {
-        memcpy(&last_report, 6kro_report, sizeof(report_6kro_t));
-        host_6kro_send(6kro_report);
-
-#ifdef DOUBLE_REPORT
-        memcpy(6kro_report, &last_report, sizeof(report_6kro_t));
-        host_6kro_send(6kro_report);
-#endif
-    }
-}
-
+    keyboard_report->mods = get_mods_for_report();
 
 #ifndef NO_ACTION_ONESHOT
     if (oneshot_mods) {
@@ -364,18 +347,12 @@ void send_nkro_report(void) {
     static report_nkro_t last_report;
 
     /* Only send the report if there are changes to propagate to the host. */
-    if (memcmp(&last_report, nkro_report, sizeof(report_nkro_t)) != 0)
-#endif
-    {
+    if (memcmp(nkro_report, &last_report, sizeof(report_nkro_t)) != 0) {
         memcpy(&last_report, nkro_report, sizeof(report_nkro_t));
         host_nkro_send(nkro_report);
-
-#ifdef DOUBLE_REPORT
-        memcpy(nkro_report, &last_report, sizeof(report_nkro_t));
-        host_nkro_send(nkro_report);
-#endif
     }
 }
+#endif
 
 /** \brief Send keyboard report
  *
