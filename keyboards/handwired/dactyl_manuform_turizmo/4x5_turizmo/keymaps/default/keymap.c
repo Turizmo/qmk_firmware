@@ -88,13 +88,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                    '------+------' '------+------'
      */
     [_BASE] = LAYOUT(
-        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                         KC_H,    KC_J,    KC_K,    KC_O,    KC_SCLN,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_QUOT,
-                          KC_LBRC, KC_RBRC,                                                        KC_MINS, KC_EQL,
-                                                     SFT_ESC, CTL_BSPC, ALT_SPC, SFT_ENT,
-                                                     KC_TAB,  KC_HOME,  KC_END,  KC_DEL,
-                                                     RAISE,   QK_BOOT,   KC_LGUI, LOWER
+        KC_Q,       KC_W,       KC_E,      KC_R,       KC_T,                       KC_Y,        KC_U,       KC_I,       KC_O,       KC_P,
+        KC_A,       KC_S,       KC_D,      KC_F,       KC_G,                       KC_H,        KC_J,       KC_K,       KC_L,       KC_N,
+        KC_Z,       KC_X,       KC_C,      KC_V,       KC_B,                       NO_AE,       KC_M,       KC_COMM,    KC_DOT,     KC_QUOT,
+                    KC_LBRC,    KC_RBRC,                                                                    NO_OSTR,    NO_ARNG,
+                                                LT(1,KC_ENT),KC_SPC,        KC_BSPC,    LT(2, KC_ESC),
+                                                KC_TAB,     KC_HOME,        KC_END,     KC_DEL,
+                                                RAISE,      QK_BOOT,        KC_LGUI,    LOWER
     ),
 
     /* Raise
