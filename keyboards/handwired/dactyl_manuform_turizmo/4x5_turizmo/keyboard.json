@@ -20,7 +20,7 @@
         "console": false,
         "extrakey": true,
         "mousekey": true,
-        "nkro": false
+        "nkro": true
     },
     "qmk": {
         "locking": {
@@ -35,7 +35,12 @@
     "diode_direction": "COL2ROW",
     "split": {
         "enabled": true,
-        "soft_serial_pin": "D0"
+        "serial": {
+            "pin": "D0"
+        },
+        "handedness": {
+            "pin": "D1"
+        }
     },
     "processor": "atmega32u4",
     "bootloader": "caterina",

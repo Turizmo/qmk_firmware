@@ -294,6 +294,8 @@ static uint8_t get_mods_for_report(void) {
 }
 
 void send_6kro_report(void) {
+    uint8_t old_mods = keyboard_report->mods;
+
     keyboard_report->mods = get_mods_for_report();
 
 #ifndef NO_ACTION_ONESHOT

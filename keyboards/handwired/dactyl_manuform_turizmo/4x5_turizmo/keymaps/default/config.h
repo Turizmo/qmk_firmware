@@ -19,8 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-
-/* Select hand configuration */
-#define EE_HANDS
-
-#define FORCE_NKRO
+#define	SPLIT_HAND_PIN_LOW_IS_LEFT
+#define KEYBOARD_MOD_PACKET_DELAY 20
+#define DYNAMIC_MACRO_NO_NESTING
+#define MK_3_SPEED
+#define MK_C_OFFSET_1 10
+#define MK_C_INTERVAL_1 1
