@@ -112,4 +112,247 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 _______,    _______,        _______,    _______,
                                                 XXXXXXX,    XXXXXXX,        XXXXXXX,    _______
     )
+};
+
+
+static uint8_t repeat_count = 1;
+static bool send_first_key = true;
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint8_t set_r_1_held = 0;
+    static uint8_t set_r_2_held = 0;
+    static uint8_t set_r_3_held = 0;
+    static uint8_t set_r_4_held = 0;
+
+ // Remap GUI directions because GUI+L cannot be remapped in windows
+    switch (keycode) {
+        case GUI_H:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_LEFT);
+                } else {
+                    register_code(KC_H);
+                }
+            } else {
+                unregister_code(KC_LEFT);
+                unregister_code(KC_H);
+            }
+            return false;
+
+        case GUI_J:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_DOWN);
+                } else {
+                    register_code(KC_J);
+                }
+            } else {
+                unregister_code(KC_DOWN);
+                unregister_code(KC_J);
+            }
+            return false;
+
+        case GUI_K:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_UP);
+                } else {
+                    register_code(KC_K);
+                }
+            } else {
+                unregister_code(KC_UP);
+                unregister_code(KC_K);
+            }
+            return false;
+
+        case GUI_L:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_GUI) {
+                    register_code(KC_RIGHT);
+                } else {
+                    register_code(KC_L);
+                }
+            } else {
+                unregister_code(KC_RIGHT);
+                unregister_code(KC_L);
+            }
+            return false;
+
+        // Functons that allows for repeating mouse keys
+       case R_WH_L:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLL);
+                }
+            }
+            break;
+
+       case R_WH_D:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLD);
+                }
+            }
+            break;
+
+       case R_WH_U:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLU);
+                }
+            }
+            break;
+
+       case R_WH_R:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_WHLR);
+                }
+            }
+            break;
+
+
+         case R_LEFT:
+            if (record->event.pressed) {
+                if (repeat_count == 1) {
+                    register_code(KC_LEFT);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_LEFT);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_LEFT);
+            }
+            break;
+
+       case R_DOWN:
+            if (record->event.pressed) {
+                if (repeat_count == 1) {
+                    register_code(KC_DOWN);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_DOWN);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_DOWN);
+            }
+            break;
+
+       case R_UP:
+            if (record->event.pressed) {
+                if (repeat_count == 1) {
+                    register_code(KC_UP);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_UP);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_UP);
+            }
+            break;
+
+       case R_RIGHT:
+            if (record->event.pressed) {
+                if (repeat_count == 1) {
+                    register_code(KC_RIGHT);
+                } else {
+                    for (uint8_t i = 0; i < repeat_count; i++) {
+                        tap_code(KC_RIGHT);
+                        wait_ms(10);
+                    }
+                }
+            } else {
+                unregister_code(KC_RIGHT);
+            }
+            break;
+
+       case R_MS_L:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_LEFT);
+                }
+            }
+            break;
+
+       case R_MS_D:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_DOWN);
+                }
+            }
+            break;
+
+       case R_MS_U:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_UP);
+                }
+            }
+            break;
+
+       case R_MS_R:
+            if (record->event.pressed) {
+                for (uint8_t i = 0; i < repeat_count; i++) {
+                    tap_code(MS_RGHT);
+                }
+            }
+            break;
+
+        case R_SET_1:
+            if (record->event.pressed) {
+                set_r_1_held = 40;
+            } else {
+                set_r_1_held = 0;
+            }
+            break;
+
+        case R_SET_2:
+            if (record->event.pressed) {
+                set_r_2_held = 20;
+            } else {
+                set_r_2_held = 0;
+            }
+            break;
+
+        case R_SET_3:
+            if (record->event.pressed) {
+                set_r_3_held = 10;
+            } else {
+                set_r_3_held = 0;
+            }
+            break;
+
+        case R_SET_4:
+            if (record->event.pressed) {
+                set_r_4_held = 5;
+            } else {
+                set_r_4_held = 0;
+            }
+            break;
+
+        case R_TL_ACL:
+            if (record->event.pressed) {
+                if (send_first_key) {
+                    tap_code(MS_ACL0);  // Replace KC_A with the first key you want to send
+                } else {
+                    tap_code(MS_ACL1); // Replace KC_B with the second key you want to send
+                }
+                send_first_key = !send_first_key;  // Toggle the state
+            }
+            return false;
+    }
+    repeat_count = set_r_1_held+set_r_2_held+set_r_3_held+set_r_4_held;
+    if (repeat_count == 0) {
+        repeat_count = 1;
+    }
+
+    return true;
 }
+
