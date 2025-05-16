@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
+#include "keymap_norwegian.h"
 
 #define _BASE 0
 #define _RAISE 1
@@ -38,6 +39,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
+
+enum custom_keycodes {
+    GUI_H = SAFE_RANGE, // Remap GUI directions because GUI+L cannot be remapped in windows
+    GUI_J,
+    GUI_K,
+    GUI_L,
+    R_SET_1,
+    R_SET_2,
+    R_SET_3,
+    R_SET_4,
+    R_WH_L,
+    R_WH_D,
+    R_WH_U,
+    R_WH_R,
+    R_LEFT,
+    R_DOWN,
+    R_UP,
+    R_RIGHT,
+    R_MS_L,
+    R_MS_D,
+    R_MS_U,
+    R_MS_R,
+    R_TL_ACL,
+
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base (qwerty)
