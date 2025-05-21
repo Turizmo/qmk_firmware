@@ -49,12 +49,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [0] = LAYOUT(  //   QWERTY layer
 
-        QK_BOOT,    KC_W,       KC_E,       KC_R,       KC_T,                               KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
+        KC_Q,    KC_W,       KC_E,       KC_R,       KC_T,                               KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
         KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                               GUI_H,      GUI_J,      GUI_K,      GUI_L,      KC_N,
         KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,                               NO_AE,      KC_M,       KC_COMM,    KC_DOT,     KC_QUOT,
                     NO_QUES,    NO_EXLM,                                                                            NO_OSTR,    NO_ARNG,
-                                            KC_SPC,     LT(1,KC_ENT),KC_LGUI,   KC_LSFT,    LT(2, KC_ESC),KC_BSPC,
-                                            KC_LCTL,    NO_QUOT,    NO_DQUO,    KC_LALT,    NO_AT,      KC_RCTL
+                                            KC_SPC,     LT(1,KC_ENT), KC_LCTL,  KC_LALT,    LT(2,KC_ESC),KC_BSPC,
+                                            NO_QUOT,    KC_LGUI,    NO_DQUO,    KC_RCTL,    KC_LSFT,    NO_AT
     ),
 
     [1] = LAYOUT(  //   Navigation layer
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         R_TL_ACL,   MS_BTN3,    MS_BTN2,    MS_BTN1,    MS_BTN5,                            R_MS_L,     R_MS_D,     R_MS_U,     R_MS_R,     KC_APP,
                     XXXXXXX,    XXXXXXX,                                                                            XXXXXXX,    XXXXXXX,
                                             _______,    _______,    _______,    _______,    MO(3),      _______,
-                                            _______,    XXXXXXX,    XXXXXXX,    _______,    XXXXXXX,    _______
+                                            _______,    _______,    _______,    _______,    _______,    _______
     ),
 
     [2] = LAYOUT(  //   Number and symbols layer
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_PERC,    KC_EQL,     NO_ASTR,    NO_PLUS,    NO_HASH,                            NO_AMPR,    NO_MINS,    KC_COMM,    KC_DOT,     KC_UNDS,
                     NO_DLR,     NO_PIPE,                                                                            NO_CIRC,    XXXXXXX,
                                             _______,    MO(3),      _______,    _______,    _______,    _______,
-                                            _______,    XXXXXXX,    XXXXXXX,    _______,    XXXXXXX,    _______
+                                            _______,    _______,    _______,    _______,    _______,    _______
     ),
 
     [3] = LAYOUT(  //   Function layer
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F11,     KC_F12,     XXXXXXX,    XXXXXXX,    XXXXXXX,                            XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                     XXXXXXX,    XXXXXXX,                                                                            XXXXXXX,    XXXXXXX,
                                             _______,    _______,    _______,    _______,    _______,    _______,
-                                            _______,    XXXXXXX,    XXXXXXX,    _______,    XXXXXXX,    _______
+                                            _______,    _______,    _______,    _______,    _______,    _______
     )
 };
 
