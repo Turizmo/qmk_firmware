@@ -47,7 +47,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [0] = LAYOUT(  //   QWERY layer
+    [0] = LAYOUT(  //   QWERTY layer
 
         KC_Q,       KC_W,       KC_E,      KC_R,       KC_T,                    KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
         KC_A,       KC_S,       KC_D,      KC_F,       KC_G,                    GUI_H,      GUI_J,      GUI_K,      GUI_L,      KC_N,
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [3] = LAYOUT(  //   Function layer
 
-        QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                KC_MPREV,   KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_MPLY,
+        QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                KC_MPRV,   KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_MPLY,
         KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,                  KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,
         KC_F11,     KC_F12,     XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                     XXXXXXX,    XXXXXXX,                                                                XXXXXXX,    XXXXXXX,

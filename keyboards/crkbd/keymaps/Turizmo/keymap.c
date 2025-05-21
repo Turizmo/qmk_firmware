@@ -81,18 +81,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  KC_LGUI,   MO(3),  LCTL_T(KC_ENT),     KC_LSFT, _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
   ),
-  //      // Symbols and numbers layer
-  //   [2] = LAYOUT_split_3x6_3_ex2(
-  // //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  //     NO_SECT, NO_QUOT, NO_DQUO,   NO_AT, NO_LBRC, NO_RBRC, NO_PIPE,    NO_LABK, NO_PLUS,    KC_7,    KC_8,    KC_9, NO_ASTR, NO_CIRC,
-  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  //     NO_HASH, NO_UNDS, NO_EXLM, NO_QUES, NO_LPRN, NO_RPRN, NO_TILD,    NO_RABK,  NO_EQL,    KC_4,    KC_5,    KC_6,    KC_0, NO_PERC,
-  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  //     NO_AMPR, NO_DLR, NO_SCLN, NO_COLN, NO_LCBR, NO_RCBR,                       NO_MINS,    KC_1,    KC_2,    KC_3, NO_SLSH, NO_BSLS,
-  // //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-  //                                KC_LGUI,   MO(3),  LCTL_T(KC_ENT),     KC_LSFT, _______, KC_LALT
-  //                                     //`--------------------------'  `--------------------------'
-  // ),
 
     [3] = LAYOUT_split_3x6_3_ex2(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -348,25 +336,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-bool isRecording = false;
 
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    if (isRecording)
-    for (uint8_t i = led_min; i < led_max; i++) {
-         rgb_matrix_set_color(i, RGB_RED);
-    }
-    return false;
-}
 
-bool dynamic_macro_record_start_user(int8_t direction) {
-  isRecording = true;
-    return true;
-}
 
-bool dynamic_macro_record_end_user(int8_t direction) {
-  isRecording = false;
-    return true;
-}
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
