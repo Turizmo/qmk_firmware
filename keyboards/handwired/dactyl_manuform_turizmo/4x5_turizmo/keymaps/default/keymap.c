@@ -49,46 +49,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [0] = LAYOUT(  //   QWERTY layer
 
-        KC_Q,       KC_W,       KC_E,      KC_R,       KC_T,                    KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
-        KC_A,       KC_S,       KC_D,      KC_F,       KC_G,                    GUI_H,      GUI_J,      GUI_K,      GUI_L,      KC_N,
-        KC_Z,       KC_X,       KC_C,      KC_V,       KC_B,                    NO_AE,      KC_M,       KC_COMM,    KC_DOT,     KC_QUOT,
-                    NO_QUES,    NO_EXLM,                                                                NO_OSTR,    NO_ARNG,
-                                                KC_SPC,LT(1,KC_ENT),        LT(2, KC_ESC),KC_BSPC,
-                                                KC_LCTL,    KC_LGUI,        KC_LSFT,    KC_LALT,
-                                                NO_QUOT,    NO_DQUO,        NO_AT,      KC_RCTL
+        QK_BOOT,    KC_W,       KC_E,       KC_R,       KC_T,                               KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
+        KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                               GUI_H,      GUI_J,      GUI_K,      GUI_L,      KC_N,
+        KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,                               NO_AE,      KC_M,       KC_COMM,    KC_DOT,     KC_QUOT,
+                    NO_QUES,    NO_EXLM,                                                                            NO_OSTR,    NO_ARNG,
+                                            KC_SPC,     LT(1,KC_ENT),KC_LGUI,   KC_LSFT,    LT(2, KC_ESC),KC_BSPC,
+                                            KC_LCTL,    NO_QUOT,    NO_DQUO,    KC_LALT,    NO_AT,      KC_RCTL
     ),
 
     [1] = LAYOUT(  //   Navigation layer
 
-        KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     KC_INS,                 R_WH_L,     R_WH_D,     R_WH_U,     R_WH_R,     KC_DEL,
-        R_SET_1,    R_SET_2,    R_SET_3,    R_SET_4,    MS_BTN4,                R_LEFT,     R_DOWN,     R_UP,       R_LEFT,     KC_TAB,
-        R_TL_ACL,   MS_BTN3,    MS_BTN2,    MS_BTN1,    MS_BTN5,                R_MS_L,     R_MS_D,     R_MS_U,     R_MS_R,     KC_APP,
-                    XXXXXXX,    XXXXXXX,                                                                XXXXXXX,    XXXXXXX,
-                                                _______,    _______,        MO(3),      _______,
-                                                _______,    _______,        _______,    _______,
-                                                XXXXXXX,    XXXXXXX,        XXXXXXX,    _______
+        KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     KC_INS,                             R_WH_L,     R_WH_D,     R_WH_U,     R_WH_R,     KC_DEL,
+        R_SET_1,    R_SET_2,    R_SET_3,    R_SET_4,    MS_BTN4,                            R_LEFT,     R_DOWN,     R_UP,       R_LEFT,     KC_TAB,
+        R_TL_ACL,   MS_BTN3,    MS_BTN2,    MS_BTN1,    MS_BTN5,                            R_MS_L,     R_MS_D,     R_MS_U,     R_MS_R,     KC_APP,
+                    XXXXXXX,    XXXXXXX,                                                                            XXXXXXX,    XXXXXXX,
+                                            _______,    _______,    _______,    _______,    MO(3),      _______,
+                                            _______,    XXXXXXX,    XXXXXXX,    _______,    XXXXXXX,    _______
     ),
 
     [2] = LAYOUT(  //   Number and symbols layer
                  //
-        NO_LBRC,    NO_LCBR,    NO_LPRN,    NO_SLSH,    NO_LABK,                NO_RABK,    NO_BSLS,    NO_RPRN,    NO_RCBR,    NO_RBRC,
-        KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,
-        KC_PERC,    KC_EQL,     NO_ASTR,    NO_PLUS,    NO_HASH,                NO_AMPR,    NO_MINS,    KC_COMM,    KC_DOT,     KC_UNDS,
-                    NO_DLR,     NO_PIPE,                                                                NO_CIRC,    XXXXXXX,
-                                                _______,    MO(3),          _______,    _______,
-                                                _______,    _______,        _______,    _______,
-                                                XXXXXXX,    XXXXXXX,        XXXXXXX,    _______
+        NO_LBRC,    NO_LCBR,    NO_LPRN,    NO_SLSH,    NO_LABK,                            NO_RABK,    NO_BSLS,    NO_RPRN,    NO_RCBR,    NO_RBRC,
+        KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                               KC_6,       KC_7,       KC_8,       KC_9,       KC_0,
+        KC_PERC,    KC_EQL,     NO_ASTR,    NO_PLUS,    NO_HASH,                            NO_AMPR,    NO_MINS,    KC_COMM,    KC_DOT,     KC_UNDS,
+                    NO_DLR,     NO_PIPE,                                                                            NO_CIRC,    XXXXXXX,
+                                            _______,    MO(3),      _______,    _______,    _______,    _______,
+                                            _______,    XXXXXXX,    XXXXXXX,    _______,    XXXXXXX,    _______
     ),
 
     [3] = LAYOUT(  //   Function layer
 
-        QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                KC_MPRV,   KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_MPLY,
-        KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,                  KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,
-        KC_F11,     KC_F12,     XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-                    XXXXXXX,    XXXXXXX,                                                                XXXXXXX,    XXXXXXX,
-                                                _______,    _______,        _______,    _______,
-                                                _______,    _______,        _______,    _______,
-                                                XXXXXXX,    XXXXXXX,        XXXXXXX,    _______
+        QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                            KC_MPRV,    KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_MPLY,
+        KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,                              KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,
+        KC_F11,     KC_F12,     XXXXXXX,    XXXXXXX,    XXXXXXX,                            XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+                    XXXXXXX,    XXXXXXX,                                                                            XXXXXXX,    XXXXXXX,
+                                            _______,    _______,    _______,    _______,    _______,    _______,
+                                            _______,    XXXXXXX,    XXXXXXX,    _______,    XXXXXXX,    _______
     )
 };
 
