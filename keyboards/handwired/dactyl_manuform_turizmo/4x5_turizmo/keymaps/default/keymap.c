@@ -52,9 +52,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                               KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,
         KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                               GUI_H,      GUI_J,      GUI_K,      GUI_L,      KC_N,
         KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,                               NO_AE,      KC_M,       KC_COMM,    KC_DOT,     NO_QUES,
-                    DM_REC2,    DM_PLY2,                                                                            NO_OSTR,    NO_ARNG,
+                    NO_GRV,     NO_TILD,                                                                            NO_OSTR,    NO_ARNG,
                                             KC_SPC,     LT(1,KC_ENT), KC_LCTL,  KC_LALT,    LT(2,KC_ESC),KC_BSPC,
-                                            XXXXXXX,    KC_LGUI,    XXXXXXX,    KC_RCTL,    KC_LSFT,    NO_EXLM
+                                            NO_QUOT,    KC_LGUI,    NO_DQUO,    KC_RCTL,    KC_LSFT,    NO_EXLM
     ),
 
     [1] = LAYOUT(  //   Navigation layer
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     KC_INS,                             R_WH_L,     R_WH_D,     R_WH_U,     R_WH_R,     KC_DEL,
         R_SET_1,    R_SET_2,    R_SET_3,    R_SET_4,    MS_BTN4,                            R_LEFT,     R_DOWN,     R_UP,       R_RIGHT,    KC_TAB,
         R_TL_ACL,   MS_BTN3,    MS_BTN2,    MS_BTN1,    MS_BTN5,                            R_MS_L,     R_MS_D,     R_MS_U,     R_MS_R,     KC_APP,
-                    XXXXXXX,    XXXXXXX,                                                                            XXXXXXX,    KC_PAUSE,
+                    XXXXXXX,    XXXXXXX,                                                                            KC_PSCR,    KC_PAUSE,
                                             _______,    _______,    _______,    _______,    MO(3),      _______,
                                             _______,    _______,    _______,    _______,    _______,    _______
     ),
@@ -74,15 +74,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_PERC,    NO_EQL,     NO_ASTR,    NO_PLUS,    NO_HASH,                            NO_AMPR,    NO_MINS,    KC_COMM,    KC_DOT,     NO_UNDS,
                     NO_DLR,     NO_PIPE,                                                                            NO_CIRC,    NO_AT,
                                             _______,    MO(3),      _______,    _______,    _______,    _______,
-                                            NO_QUOT,    _______,    NO_DQUO,    _______,    _______,    _______
+                                            _______,    _______,    _______,    _______,    _______,    _______
     ),
 
     [3] = LAYOUT(  //   Function layer
 
         QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                            KC_MPRV,    KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_MPLY,
         KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,                              KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,
-        KC_F11,     KC_F12,     XXXXXXX,    DM_PLY1,    DM_REC1,                            DM_REC2,    DM_PLY2,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-                    DM_REC1,    DM_PLY1,                                                                            XXXXXXX,    XXXXXXX,
+        KC_F11,     KC_F12,     KC_F13,     KC_F14,     KC_F15,                             KC_F16,     KC_F17,     KC_F18,     KC_F19,     KC_F20,
+                    DM_REC1,    DM_PLY1,                                                                            DM_PLY2,    DM_REC2,
                                             _______,    _______,    _______,    _______,    _______,    _______,
                                             _______,    _______,    _______,    _______,    _______,    _______
     )
