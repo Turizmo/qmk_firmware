@@ -309,7 +309,9 @@ static uint8_t get_mods_for_report(void) {
 }
 
 void send_6kro_report(void) {
+#if ((KEYBOARD_MOD_PACKET_DELAY) > 0)
     uint8_t old_mods = keyboard_report->mods;
+#endif
 
     keyboard_report->mods = get_mods_for_report();
 #ifdef PROTOCOL_VUSB
