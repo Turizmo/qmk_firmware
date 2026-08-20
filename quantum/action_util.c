@@ -312,26 +312,6 @@ void send_6kro_report(void) {
     uint8_t old_mods = keyboard_report->mods;
 
     keyboard_report->mods = get_mods_for_report();
-
-#ifndef NO_ACTION_ONESHOT
-    if (oneshot_mods) {
-#    if (defined(ONESHOT_TIMEOUT) && (ONESHOT_TIMEOUT > 0))
-        if (has_oneshot_mods_timed_out()) {
-            dprintf("Oneshot: timeout\n");
-            clear_oneshot_mods();
-        }
-#    endif
-        keyboard_report->mods |= oneshot_mods;
-        if (has_anykey()) {
-            clear_oneshot_mods();
-        }
-    }
-#endif
-#ifdef KEY_OVERRIDE_ENABLE
-    // These need to be last to be able to properly control key overrides
-    keyboard_report->mods &= ~suppressed_mods;
-    keyboard_report->mods |= weak_override_mods;
-#endif
 #ifdef PROTOCOL_VUSB
     host_keyboard_send(keyboard_report);
 #else
