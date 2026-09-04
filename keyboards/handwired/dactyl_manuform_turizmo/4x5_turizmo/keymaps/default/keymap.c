@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         R_SET_1,    R_SET_2,    R_SET_3,    R_SET_4,    MS_BTN4,                            R_LEFT,     R_DOWN,     R_UP,       R_RIGHT,    KC_TAB,
         R_TL_ACL,   MS_BTN3,    MS_BTN2,    MS_BTN1,    MS_BTN5,                            R_MS_L,     R_MS_D,     R_MS_U,     R_MS_R,     KC_APP,
                     XXXXXXX,    XXXXXXX,                                                                            KC_PSCR,    KC_PAUSE,
-                                            _______,    _______,    _______,    _______,    MO(3),      _______,
+                                            _______,    _______,    _______,    _______,    _______,    _______,
                                             _______,    _______,    _______,    _______,    _______,    _______
     ),
 
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                               KC_6,       KC_7,       KC_8,       KC_9,       KC_0,
         KC_PERC,    NO_EQL,     NO_ASTR,    NO_PLUS,    NO_HASH,                            NO_AMPR,    NO_MINS,    KC_COMM,    KC_DOT,     NO_UNDS,
                     NO_DLR,     NO_PIPE,                                                                            NO_CIRC,    NO_AT,
-                                            _______,    MO(3),      _______,    _______,    _______,    _______,
+                                            _______,    _______,    _______,    _______,    _______,    _______,
                                             _______,    _______,    _______,    _______,    _______,    _______
     ),
 
@@ -329,3 +329,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+
+// Layer 3 = layers 1 and 2 held together; releasing either thumb leaves layer 3
+layer_state_t layer_state_set_user(layer_state_t state) {
+    return update_tri_layer_state(state, 1, 2, 3);
+}
